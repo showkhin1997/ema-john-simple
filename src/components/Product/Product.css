@@ -2,6 +2,7 @@
     display: flex;
     border-bottom: 1px solid lightgray;
     margin-right: 5px;
+    padding-bottom: 5px;
 }
 .product-name{
     color: rgb(0, 0, 255);
@@ -11,5 +12,12 @@
 }
 .product-detail{
     margin-left: 20px;
-    margin-top: 10px;
+}
+.btn-regular{
+    background-color: goldenrod;
+    width: 150px;
+    height: 25px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
 }
