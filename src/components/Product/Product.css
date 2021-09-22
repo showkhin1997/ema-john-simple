@@ -1,0 +1,15 @@
+.product{
+    display: flex;
+    border-bottom: 1px solid lightgray;
+    margin-right: 5px;
+}
+.product-name{
+    color: rgb(0, 0, 255);
+    font-weight: 400;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+.product-detail{
+    margin-left: 20px;
+    margin-top: 10px;
+}
