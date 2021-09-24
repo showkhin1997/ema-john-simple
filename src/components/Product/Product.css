@@ -21,3 +21,8 @@
     border-radius: 5px;
     cursor: pointer;
 }
+.rating-icon{
+    color: rgb(245, 208, 0);
+    padding-bottom: 15px;
+    margin-left: 3px;
+}

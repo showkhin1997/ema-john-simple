@@ -7,11 +7,15 @@ import './Shop.css';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+    const [displayProducts, setDisplayProducts] = useState([]);
 
     useEffect(() => {
         fetch('./products.JSON')
             .then(res => res.json())
-            .then(data => setProducts(data))
+            .then(data => {
+                setProducts(data);
+                setDisplayProducts(data);
+            });
     }, []);
 
     useEffect(() => {
@@ -37,21 +41,34 @@ const Shop = () => {
         // add to loacl storage
         addToDb(product.key);
     }
+
+    const handaleSearch = event => {
+        const searchText = event.target.value;
+        const matchProducts = products.filter(product => product.name.toLowerCase().includes(searchText.toLowerCase()));
+        setDisplayProducts(matchProducts);
+        console.log(matchProducts.length);
+    }
+
     return (
-        <div className="shop-container">
-            <div className="product-container">
-                {
-                    products.map(product => <Product
-                        key={product.key}
-                        product={product}
-                        handaleAddToCart={handaleAddToCart}
-                    ></Product>)
-                }
+        <>
+            <div className="search-container">
+                <input type="text" placeholder="Search Product" onChange={handaleSearch} />
             </div>
-            <div className="cart-container">
-                <Cart cart={cart}></Cart>
+            <div className="shop-container">
+                <div className="product-container">
+                    {
+                        displayProducts.map(product => <Product
+                            key={product.key}
+                            product={product}
+                            handaleAddToCart={handaleAddToCart}
+                        ></Product>)
+                    }
+                </div>
+                <div className="cart-container">
+                    <Cart cart={cart}></Cart>
+                </div>
             </div>
-        </div>
+        </>
     );
 };
 
